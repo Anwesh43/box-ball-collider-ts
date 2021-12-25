@@ -14,4 +14,4 @@ const BoxBallCollider : React.FC<BBCProps> = (props : BBCProps) => {
         </React.Fragment>
     )
 } 
-export default BoxBallCollider
+export default withContext(BoxBallCollider)

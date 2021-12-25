@@ -1,6 +1,6 @@
 import {useState, useEffect, CSSProperties} from 'react'
 
-const scGap : number = 0.02 
+const scGap : number = 0.01
 const delay : number = 20 
 export const useAnimatedScale = () => {
     const [scale, setScale] = useState(0)
@@ -47,11 +47,12 @@ export const useDimension = () => {
 
 const maxScale = (scale : number, i : number, n : number) : number => Math.max(0, scale - i / n)
 const divideScale = (scale : number, i : number, n : number) : number => Math.min(1 / n, maxScale(scale, i, n)) * n 
+const sinify = (scale : number) : number => Math.sin(scale * Math.PI)
 const parts : number = 2 
 const sizeFactor : number = 11.2 
 export const useStyle = (w : number, h : number, scale : number) => {
-    const sc1 : number = divideScale(scale, 0, parts)
-    const sc2 : number = divideScale(scale, 1, parts)
+    const sc1 : number = divideScale(sinify(scale), 0, parts)
+    const sc2 : number = divideScale(sinify(scale), 1, parts)
     const position  = 'absolute'
     const background = 'indigo'
     const size : number = Math.min(w, h) / sizeFactor 
